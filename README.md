@@ -3,6 +3,14 @@
 This repository implements a **Model Context Protocol (MCP)** server tailored for SREs and Platform Engineers working in high-scale Fintech environments. It bridges the gap between LLMs (like Claude) and your Kubernetes/Observability stack.
 
 ## 🏗️ System Architecture
+```mermaid
+graph TD
+    A[AI Agent / Claude] -->|MCP Protocol| B[MCP SRE Gateway]
+    B -->|PromQL| C[(Prometheus)]
+    B -->|K8s API| D[Kubernetes Cluster]
+    C -->|Metrics| B
+    D -->|Pod Status| B
+```
 The AI Agent (Client) connects to this MCP Server to perform real-time diagnostic tasks:
 - **Metrics:** Queries Prometheus for service-level latencies (p95).
 - **Orchestration:** Inspects Kubernetes namespaces for unhealthy pods.
