@@ -1,26 +1,50 @@
-# 🚀 Agentic SRE: Fintech Observability with MCP
+# 🚀 Agentic SRE: Fintech Observability Gateway (MCP)
 
-A Model Context Protocol (MCP) server designed for high-scale Fintech environments. This project bridges the gap between AI Agents and Kubernetes observability stacks, enabling autonomous incident investigation.
+This repository implements a **Model Context Protocol (MCP)** server tailored for SREs and Platform Engineers working in high-scale Fintech environments. It bridges the gap between LLMs (like Claude) and your Kubernetes/Observability stack.
 
-## 🛠 Tech Stack
-* **Runtime:** Python 3.12+
-* **Framework:** FastMCP
-* **Orchestration:** Kubernetes
-* **Observability:** Prometheus, Loki, Tempo
-* **Protocol:** MCP
+## 🏗️ System Architecture
+The AI Agent (Client) connects to this MCP Server to perform real-time diagnostic tasks:
+- **Metrics:** Queries Prometheus for service-level latencies (p95).
+- **Orchestration:** Inspects Kubernetes namespaces for unhealthy pods.
+- **Protocol:** Stdio-based Model Context Protocol.
 
-## 🚀 Key Features
-* **Live Prometheus Querying:** Agent can fetch p95 latency on-demand.
-* **Context-Aware SRE:** LLM can correlate metrics through the MCP gateway.
-* **Security:** Designed for VPC/AirGap environments.
+## 📁 Project Structure
+- `src/server.py`: The main entry point for the MCP server.
+- `src/tools/`: Modularized diagnostic tools (Prometheus & K8s).
+- `requirements.txt`: Python dependencies.
+- `Dockerfile`: Containerization for cluster deployment.
 
-## 💻 Quick Start
+## 🛠️ Tech Stack
+- **Language:** Python 3.12+
+- **Framework:** FastMCP
+- **Libraries:** kubernetes-client, requests
+- **Observability:** Prometheus, K8s API
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Python 3.12+
+- Access to a Kubernetes cluster (or local kubeconfig)
+
+### Installation
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+```
+
+### Running Locally
+```bash
+# Set your Prometheus address
+export PROMETHEUS_URL="http://your-prometheus:9090"
+
+# Run the server
 python3 src/server.py
 ```
 
+## 🔧 Available Tools
+- `get_p95_latency(service_name)`: Fetches real-time latency metrics.
+- `get_pod_status(namespace)`: Scans K8s for failing pods.
+
 ---
-*Let's build systems that don't break.* 🛠️
+*Built for reliability. Let's build systems that don't break.* 🛠️
