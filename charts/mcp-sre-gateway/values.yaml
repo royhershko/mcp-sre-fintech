@@ -1,0 +1,18 @@
+replicaCount: 1
+
+image:
+  repository: royhershko/mcp-sre-fintech
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+env:
+  prometheusUrl: "http://prometheus-server.monitoring.svc.cluster.local:9090"
+  namespace: "fintech-trading"
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi

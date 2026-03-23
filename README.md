@@ -28,6 +28,14 @@ The AI Agent (Client) connects to this MCP Server to perform real-time diagnosti
 - **Libraries:** kubernetes-client, requests
 - **Observability:** Prometheus, K8s API
 
+## 🚢 Helm Chart (Deployment)
+Easily deploy the MCP Gateway to your cluster using Helm:
+
+```bash
+cd charts/mcp-sre-gateway
+helm install mcp-prod .
+```
+
 ## 🏗️ Infrastructure as Code (Terraform)
 The project includes Terraform manifests to provision the required Kubernetes infrastructure.
 
