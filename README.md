@@ -28,6 +28,15 @@ The AI Agent (Client) connects to this MCP Server to perform real-time diagnosti
 - **Libraries:** kubernetes-client, requests
 - **Observability:** Prometheus, K8s API
 
+## 🏗️ Infrastructure as Code (Terraform)
+The project includes Terraform manifests to provision the required Kubernetes infrastructure.
+
+```bash
+cd terraform
+terraform init
+terraform apply
+```
+
 ## 🚀 Getting Started
 
 ### Prerequisites
